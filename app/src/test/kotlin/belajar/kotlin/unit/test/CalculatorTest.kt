@@ -1,11 +1,8 @@
 package belajar.kotlin.unit.test
 
 import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.DisplayNameGeneration
-import org.junit.jupiter.api.assertThrows
 
 @DisplayNameGeneration(SimpleDisplayNameGenerator::class)
 //@DisplayName("Test for Calculator class")
@@ -39,5 +36,11 @@ class CalculatorTest {
         assertThrows<IllegalArgumentException> {
             calculator.divide(100, 0)
         }
+    }
+
+    @Test
+    @Disabled("Sedang diperbaiki")
+    fun testComingSoon() {
+        // Belum selesai
     }
 }
