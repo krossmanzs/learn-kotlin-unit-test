@@ -3,11 +3,13 @@
  */
 package belajar.kotlin.unit.test
 
-import kotlin.test.Test
-import kotlin.test.assertNotNull
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.*
 
 class AppTest {
-    @Test fun appHasAGreeting() {
+    @Test
+    fun appHasAGreeting() {
+        println("Ini Test")
         val classUnderTest = App()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
     }
