@@ -37,10 +37,16 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
+tasks.register("integration-test", Test::class) {
+    useJUnitPlatform {
+        includeTags("integration-test")
+    }
+}
+
 // Mengganti kompilasi jvm menjadi versi 1.8
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -53,3 +59,4 @@ java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
+
