@@ -3,6 +3,7 @@ package belajar.kotlin.unit.test
 import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.opentest4j.TestAbortedException
 
 @DisplayNameGeneration(SimpleDisplayNameGenerator::class)
 //@DisplayName("Test for Calculator class")
@@ -72,5 +73,15 @@ class CalculatorTest {
     @Disabled("Sedang diperbaiki")
     fun testComingSoon() {
         // Belum selesai
+    }
+
+    @Test
+    fun testAborted() {
+        val profile = System.getenv()["PROFILE"]
+        if ("DEV" != profile) {
+            throw TestAbortedException()
+        }
+
+        println("Test Not Aborted because Dev Profile")
     }
 }
