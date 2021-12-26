@@ -3,6 +3,7 @@ package belajar.kotlin.unit.test
 import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assumptions.*
 import org.opentest4j.TestAbortedException
 
 @DisplayNameGeneration(SimpleDisplayNameGenerator::class)
@@ -84,4 +85,20 @@ class CalculatorTest {
 
         println("Test Not Aborted because Dev Profile")
     }
+
+    /**
+     * Penggunaan Assumptions mirip dengan Assertions,
+     * jika nilainya tidak sama, maka function Assumptions
+     * akan thrown TestAbortedException, sehingga secara
+     * otomatis akan membatalkan unit test yang sedang berjalan
+     */
+
+    @Test
+    fun testAssumption() {
+        assumeTrue("DEV" == System.getenv()["PROFILE"])
+
+        // ketika Assumption true
+        println("Test Not Aborted because Dev Profile")
+    }
 }
+
