@@ -48,3 +48,8 @@ application {
     // Define the main class for the application.
     mainClass.set("belajar.kotlin.unit.test.AppKt")
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
