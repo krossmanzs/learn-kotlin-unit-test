@@ -8,12 +8,13 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.extension.Extensions
 import java.util.*
 
-@Extensions(value = [
-    ExtendWith(RandomParameterResolver::class)
-])
-class RandomCalculatorTest {
+// jika extend ParentCalculatorTest maka tidak wajib mengextend RandomParameterResolver
+//@Extensions(value = [
+//    ExtendWith(RandomParameterResolver::class)
+//])
+class RandomCalculatorTest : ParentCalculatorTest() {
 
-    private val calculator = Calculator()
+//    private val calculator = Calculator()
 
     @Test
     fun testRandom(random: Random) {
