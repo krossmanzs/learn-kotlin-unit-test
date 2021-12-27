@@ -5,6 +5,9 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.extension.Extensions
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.*
 
 // jika extend ParentCalculatorTest maka tidak wajib mengextend RandomParameterResolver
@@ -14,6 +17,32 @@ import java.util.*
 class RandomCalculatorTest : ParentCalculatorTest() {
 
 //    private val calculator = Calculator()
+
+    companion object {
+
+        @JvmStatic
+        fun parameterSource() : List<Int> {
+            return listOf(10,20,30,40,50)
+        }
+
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = ["parameterSource"])
+    fun testWithMethodSource(value: Int) {
+        val result = calculator.add(value, value)
+        assertEquals(value + value, result)
+        println(result)
+    }
+
+    @DisplayName("Test Calculator with parameter")
+    @ParameterizedTest(name = "{displayName} with data {0}")
+    @ValueSource(ints = [10,20,30,40,50])
+    fun testWithParameter(value: Int) {
+        val result = calculator.add(value, value)
+        assertEquals(value + value, result)
+        println(result)
+    }
 
     @Test
     fun testRandom(random: Random) {
